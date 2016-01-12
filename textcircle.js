@@ -1,6 +1,20 @@
 this.Documents2 = new Mongo.Collection("documents2");
 
 if (Meteor.isClient) {
+
+    // update the session current_date
+    // variable every 1000 ms
+
+    Meteor.setInterval(()=>{
+        Session.set("current_date", new Date());
+    }, 1000);
+
+    Template.date_display.helpers({
+        current_date:()=>{
+            return Session.get("current_date");
+        }
+    });
+
     Template.editor.helpers({
         docid:function(){
             var doc = Documents2.findOne();
