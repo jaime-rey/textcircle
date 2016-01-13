@@ -3,9 +3,26 @@
 </head>
 
 <body>
-  <h1>Welcome to Textcircle!</h1>
-    {{> date_display}}
-    {{> editor}}
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Textcycle</a>
+            <a class="navbar-brand" href="#">{{> date_display}}</a>
+        </div>
+    </nav>
+    <div class="container top-margin">
+
+        <div class="row">
+            <div class="col-md-6">
+                {{> editor}}
+            </div>
+            <div class="col-md-6">
+                {{> viewer}}
+            </div>
+        </div>
+
+    </div>
+
+
 </body>
 
 <template name="date_display">
@@ -13,5 +30,11 @@
 </template>
 
 <template name="editor">
-    {{>sharejsCM docid=docid id="editor"}}
+    {{>sharejsCM docid=docid onRender=config id="editor"}}
+</template>
+
+<template name="viewer">
+    <iframe id="viewer_iframe">
+
+    </iframe>
 </template>

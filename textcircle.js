@@ -24,7 +24,19 @@ if (Meteor.isClient) {
             else {
                 return undefined;
             }
+        },
+        config:()=>{
+            return editor=>{
+                editor.on("change", (cm_editor, info)=>{
+                    console.log(cm_editor.getValue());
+                    $("#viewer_iframe").contents().find("html").html(cm_editor.getValue());
+                });
+            }
         }
+    });
+
+    Template.viewer.helpers({
+
     });
 }
 
